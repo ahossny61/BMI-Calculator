@@ -1,5 +1,4 @@
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -8,6 +7,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  bool isMale=true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,51 +23,61 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Row(
                 children: [
                   Expanded(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15.0),
-                        color: Colors.grey[400],
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.ac_unit,
-                          size: 70.0,
-                          ),
-                          SizedBox(height: 20,),
-                          Text(
-                            'MALE',
-                            style: TextStyle(
-                              fontSize: 30.0,
-                              fontWeight: FontWeight.bold
-                            ),
-                          )
-                        ],
+                    child: GestureDetector(
+                      onTap: (){
+                        setState(() {
+                          isMale=true;
+                        });
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15.0),
+                          color: isMale?Colors.blue:Colors.grey[400]
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image(image: AssetImage('assets/images/male.png'),width: 90,height: 90,),
+                            SizedBox(height: 20,),
+                            Text(
+                              'MALE',
+                              style: TextStyle(
+                                fontSize: 30.0,
+                                fontWeight: FontWeight.bold
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),
                   SizedBox(width: 20.0,),
                   Expanded(
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15.0),
-                        color: Colors.grey[400],
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Icons.ac_unit,
-                            size: 70.0,
-                          ),
-                          SizedBox(height: 20,),
-                          Text(
-                            'MALE',
-                            style: TextStyle(
-                                fontSize: 30.0,
-                                fontWeight: FontWeight.bold
-                            ),
-                          )
-                        ],
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          isMale=false;
+                        });
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(15.0),
+                          color: isMale?Colors.grey[400]:Colors.blue,
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image(image: AssetImage('assets/images/female.png'),width: 90,height: 90,),
+                            SizedBox(height: 20,),
+                            Text(
+                              'FEMALE',
+                              style: TextStyle(
+                                  fontSize: 30.0,
+                                  fontWeight: FontWeight.bold
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   )
