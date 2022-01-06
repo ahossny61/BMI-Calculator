@@ -1,4 +1,7 @@
 
+import 'dart:math';
+
+import 'package:first_project/bmi_result_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -179,6 +182,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               child: Icon(
                                 Icons.remove,
                               ),
+                                heroTag: 'Age-',
                               ),
                               FloatingActionButton(
                                 onPressed: (){
@@ -190,6 +194,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Icon(
                                   Icons.add,
                                 ),
+                                heroTag: 'Age+',
                               )
                             ],
                           )
@@ -235,6 +240,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Icon(
                                   Icons.remove,
                                 ),
+                                heroTag: 'weight-',
                               ),
                               FloatingActionButton(
                                 onPressed: (){
@@ -246,6 +252,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Icon(
                                   Icons.add,
                                 ),
+                                heroTag: 'weght+',
                               )
                             ],
                           )
@@ -262,7 +269,18 @@ class _HomeScreenState extends State<HomeScreen> {
             width: double.infinity,
               color: Colors.blue,
               child: MaterialButton(
-                onPressed: (){},
+                onPressed: (){
+                  var result=weight/pow(height/200, 2);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder :(context)=>BmiResultScreen(
+                            result: result.round(),
+                            age: age,
+                            gender: isMale?'MALE':'FEMALE',
+                          ))
+                  );
+                },
                 child: Text(
                   'Calculate',
                   style: TextStyle(
