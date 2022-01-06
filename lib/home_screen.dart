@@ -9,7 +9,9 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar (),
       body: Container(
+        child: Column(
 
+        ),
       ),
     );
   }
