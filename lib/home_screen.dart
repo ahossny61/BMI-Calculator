@@ -9,6 +9,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
 
   bool isMale=true;
+  double height=120;
+  int weight=50,age=20;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -110,7 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       textBaseline: TextBaseline.alphabetic,
                       children: [
                         Text(
-                          '180',
+                          '${height.round()}',
                           style: TextStyle(
                               fontSize: 45.0,
                               fontWeight: FontWeight.w900
@@ -125,7 +127,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ],
                     ),
-                    Slider(value: 180,max: 220,min: 80, onChanged: (value){})
+                    Slider(value: height,max: 220,min: 80, onChanged: (value){setState(() {
+                      height=value;
+                    });})
 
                   ],
                 ),
@@ -156,7 +160,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                           Text(
-                            '25',
+                            '${age}',
                             style: TextStyle(
                                 fontSize: 45.0,
                                 fontWeight: FontWeight.w900
@@ -166,14 +170,22 @@ class _HomeScreenState extends State<HomeScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               FloatingActionButton(
-                                  onPressed: (){},
+                                  onPressed: (){
+                                    setState(() {
+                                      age--;
+                                    });
+                                  },
                                 mini: true,
                               child: Icon(
                                 Icons.remove,
                               ),
                               ),
                               FloatingActionButton(
-                                onPressed: (){},
+                                onPressed: (){
+                                  setState(() {
+                                    age++;
+                                  });
+                                },
                                 mini: true,
                                 child: Icon(
                                   Icons.add,
@@ -197,14 +209,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            'AGE',
+                            'WIGHT',
                             style: TextStyle(
                                 fontSize: 25.0,
                                 fontWeight: FontWeight.bold
                             ),
                           ),
                           Text(
-                            '25',
+                            '${weight}',
                             style: TextStyle(
                                 fontSize: 45.0,
                                 fontWeight: FontWeight.w900
@@ -214,14 +226,22 @@ class _HomeScreenState extends State<HomeScreen> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               FloatingActionButton(
-                                onPressed: (){},
+                                onPressed: (){
+                                  setState(() {
+                                    weight--;
+                                  });
+                                },
                                 mini: true,
                                 child: Icon(
                                   Icons.remove,
                                 ),
                               ),
                               FloatingActionButton(
-                                onPressed: (){},
+                                onPressed: (){
+                                  setState(() {
+                                    weight++;
+                                  });
+                                },
                                 mini: true,
                                 child: Icon(
                                   Icons.add,
